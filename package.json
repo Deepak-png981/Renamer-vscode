@@ -18,7 +18,7 @@
     "commands": [
       {
         "command": "renamer.improveFileName",
-        "title": "Renamer: Improve the name of the current file"
+        "title": "ReNameIt: Improve the name of the current file"
       }
     ]
   },

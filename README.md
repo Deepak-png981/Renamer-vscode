@@ -1,8 +1,8 @@
-# Renamer 
+# ReNameIt 
 
 ## Overview
 
-Renamer is a VSCode extension that automatically suggests new file names based on the content of the file.
+ReNameIt is a VSCode extension that automatically suggests new file names based on the content of the file.
 
 ### Features
 
@@ -12,7 +12,7 @@ Renamer is a VSCode extension that automatically suggests new file names based o
 ### Usage
 
 1. Open a file in VSCode.
-2. Run the command **Renamer: Improve the name of the current file** from the Command Palette (`Ctrl+Shift+P`).
+2. Run the command **ReNameIt: Improve the name of the current file** from the Command Palette (`Ctrl+Shift+P`).
 3. Choose whether to accept, deny, or retry the renaming process.
 
 ### Requirements
