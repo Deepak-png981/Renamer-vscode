@@ -4,6 +4,7 @@
   "description": "An AI based file renamer",
   "publisher": "DeepakJoshi",
   "repository": "https://github.com/Deepak-png981/Renamer-vscode",
+  "icon": "images/ReNameIt.jpg",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.93.0"

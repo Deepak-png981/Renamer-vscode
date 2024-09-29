@@ -1,4 +1,4 @@
-# Renamer - VSCode Extension
+# Renamer 
 
 ## Overview
 
@@ -30,7 +30,3 @@ To install the extension:
 ### Contribution
 
 Feel free to open issues or contribute improvements by submitting a pull request.
-
-### License
-
-MIT
