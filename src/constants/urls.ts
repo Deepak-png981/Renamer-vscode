@@ -1,0 +1,1 @@
+export const RUN_BINARY_URL = 'https://renamer-app.vercel.app/api/runBinary';
