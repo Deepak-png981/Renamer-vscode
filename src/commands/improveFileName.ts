@@ -26,37 +26,46 @@ export const improveFileNameCommand = async () => {
             cancellable: false
         }, async (progress) => {
 
-            const data = await renameFileViaApi(fileName, fileContent , namingConvention);
-            const initialSuggestedName = data.renamedFiles[fileName].suggested_name;
+            try {
+                const data = await renameFileViaApi(fileName, fileContent, namingConvention);
+                const initialSuggestedName = data.renamedFiles[fileName].suggested_name;
 
-            const suggestedName = path.extname(initialSuggestedName) !== fileExtension
-                ? initialSuggestedName + fileExtension
-                : initialSuggestedName;
+                const suggestedName = path.extname(initialSuggestedName) !== fileExtension
+                    ? initialSuggestedName + fileExtension
+                    : initialSuggestedName;
 
-            const result = await vscode.window.showInformationMessage(
-                `Current file name: ${fileName}\nSuggested file name: ${suggestedName}`,
-                { modal: true },
-                {
-                    title: "✅ Accept Suggestion",
-                    isCloseAffordance: false
-                },
-                {
-                    title: "🔄 Retry",
-                    isCloseAffordance: false
-                },
-                {
-                    title: "❌ Deny",
-                    isCloseAffordance: true // This will act as a cancel button
+                const result = await vscode.window.showInformationMessage(
+                    `Current file name: ${fileName}\nSuggested file name: ${suggestedName}`,
+                    { modal: true },
+                    {
+                        title: "✅ Accept Suggestion",
+                        isCloseAffordance: false
+                    },
+                    {
+                        title: "🔄 Retry",
+                        isCloseAffordance: false
+                    },
+                    {
+                        title: "❌ Deny",
+                        isCloseAffordance: true // This will act as a cancel button
+                    }
+                );
+
+                if (result?.title === '✅ Accept Suggestion') {
+                    await renameFile(currentFilePath, suggestedName);
+                } else if (result?.title === '🔄 Retry') {
+                    improveFileNameCommand();
+                } else {
+                    vscode.window.showInformationMessage('File renaming cancelled.');
                 }
-            );
-
-            if (result?.title === '✅ Accept Suggestion') {
-                await renameFile(currentFilePath, suggestedName);
-            } else if (result?.title === '🔄 Retry') {
-                improveFileNameCommand();
-            } else {
-                vscode.window.showInformationMessage('File renaming cancelled.');
+            } catch (error: any) {
+                if (error.response && error.response.status === 429) {
+                    vscode.window.showErrorMessage("Too many requests. Please try again later.");
+                } else {
+                    vscode.window.showErrorMessage(error.message || 'An unknown error occurred.');
+                }
             }
+
         });
     } catch (error) {
         if (error instanceof Error) {
