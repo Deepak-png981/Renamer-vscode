@@ -5,7 +5,7 @@
   "publisher": "DeepakJoshi",
   "repository": "https://github.com/Deepak-png981/Renamer-vscode",
   "icon": "images/ReNameIt.jpg",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.93.0"
   },
@@ -20,7 +20,29 @@
         "command": "renamer.improveFileName",
         "title": "ReNameIt: Improve the name of the current file"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "ReNameIt Settings",
+      "properties": {
+        "renameit.namingConvention": {
+          "type": "string",
+          "default": "camelCase",
+          "enum": [
+            "camelCase",
+            "PascalCase",
+            "snake_case",
+            "kebab-case",
+            "UPPER_SNAKE_CASE",
+            "Train-Case",
+            "dot.notation",
+            "HungarianNotation",
+            "lisp-case"
+          ],
+          "description": "Choose the naming convention for renamed files."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
