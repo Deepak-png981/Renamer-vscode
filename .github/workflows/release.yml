@@ -25,17 +25,18 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Package VSCode extension
-        run: npx vsce package
+      - name: Install VSCE (New command to use @vscode/vsce instead of deprecated vsce)
+        run: npm install -g @vscode/vsce
 
-      - name: Publish to Marketplace
-        run: npx vsce publish
-        env:
-          VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
+      - name: Package VSCode Extension
+        run: npx @vscode/vsce package
 
-      - name: Create Release in GitHub
-        uses: softprops/action-gh-release@v1
+      - name: Archive VSIX
+        uses: actions/upload-artifact@v3
         with:
-          files: '*.vsix'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: renamed-vscode-extension
+          path: ./*.vsix
+
+      - name: Publish Extension (main branch only)
+        if: github.ref == 'refs/heads/main'
+        run: npx @vscode/vsce publish -p ${{ secrets.VSCE_TOKEN }}
