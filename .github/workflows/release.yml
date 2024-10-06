@@ -1,0 +1,41 @@
+name: Release VSCode Extension
+
+on:
+  push:
+    branches:
+      - main  
+    pull_request:
+      branches:
+        - main
+
+jobs:
+  release:
+    name: Release Extension
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'  
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Package VSCode extension
+        run: npx vsce package
+
+      - name: Publish to Marketplace
+        run: npx vsce publish
+        env:
+          VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
+
+      - name: Create Release in GitHub
+        uses: softprops/action-gh-release@v1
+        with:
+          files: '*.vsix'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
