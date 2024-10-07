@@ -9,7 +9,10 @@ ReNameIt is a VSCode extension that automatically suggests new file names based 
 - Provides suggestions for improved file names.
 - Allows users to accept or deny the suggestions.
 - Supports various naming conventions such as camelCase, PascalCase, snake_case, and more.
-
+- Supports the following file types:
+  - Markdown (.md)
+  - Plain Text (.txt)
+  - TypeScript (.ts)
 
 ### Usage
 
