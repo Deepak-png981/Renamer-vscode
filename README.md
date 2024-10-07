@@ -8,12 +8,18 @@ ReNameIt is a VSCode extension that automatically suggests new file names based 
 
 - Provides suggestions for improved file names.
 - Allows users to accept or deny the suggestions.
+- Supports various naming conventions such as camelCase, PascalCase, snake_case, and more.
+
 
 ### Usage
 
 1. Open a file in VSCode.
-2. Run the command **ReNameIt: Improve the name of the current file** from the Command Palette (`Ctrl+Shift+P`).
-3. Choose whether to accept, deny, or retry the renaming process.
+2. ***(Optional)*** Set your preferred Naming Convention:
+Go to Settings (or press Ctrl + ,).
+Search for ReNameIt in the settings.
+Choose your preferred naming convention (e.g., camelCase, PascalCase, snake_case, etc.).
+3. Run the command **ReNameIt: Improve the name of the current file** from the Command Palette (`Ctrl+Shift+P`).
+4. Choose whether to accept, deny, or retry the renaming process.
 
 ### Requirements
 
