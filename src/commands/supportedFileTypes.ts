@@ -1,0 +1,1 @@
+export const supportedFileTypes = ['.md', '.ts', '.txt'];

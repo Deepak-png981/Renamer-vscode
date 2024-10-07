@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import { renameFileViaApi } from '../api/renamerApi';
 import { renameFile } from '../utils/fileOperations';
+import { supportedFileTypes } from './supportedFileTypes';
 
 export const improveFileNameCommand = async () => {
     const editor = vscode.window.activeTextEditor;
@@ -27,6 +28,7 @@ export const improveFileNameCommand = async () => {
         }, async (progress) => {
 
             try {
+                if(supportedFileTypes.includes(fileExtension)) {
                 const data = await renameFileViaApi(fileName, fileContent, namingConvention);
                 const initialSuggestedName = data.renamedFiles[fileName].suggested_name;
 
@@ -58,6 +60,9 @@ export const improveFileNameCommand = async () => {
                 } else {
                     vscode.window.showInformationMessage('File renaming cancelled.');
                 }
+            }else{
+                vscode.window.showInformationMessage('File type not supported.');
+            }
             } catch (error: any) {
                 if (error.response && error.response.status === 429) {
                     vscode.window.showErrorMessage("Too many requests. Please try again later.");
