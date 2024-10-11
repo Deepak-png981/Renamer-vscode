@@ -4,6 +4,17 @@ All notable changes to the "AI-file-renmaer" extension will be documented in thi
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.2.0] - 11-10-2024
+
+### Added
+ 
+- Introduced the support for `JSX` files
+- Introduced the support for `YAML` files
+- Introduced the support for `JS` files
+- Introduced the support for `TSX` files
+- Introduced the support for `YML` files
+- Updated the Logo for the `ReNameIt` extension
+
 ## [0.1.1] - 07-10-2024
 
 ### Added 
