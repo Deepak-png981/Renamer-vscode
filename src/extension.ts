@@ -38,7 +38,7 @@ export function activate(context: vscode.ExtensionContext) {
     }
 }
 
-function handleGitRepositories() {
+async function handleGitRepositories() {
     const gitExtension = vscode.extensions.getExtension<GitExtension>('vscode.git')?.exports;
     if (!gitExtension) {
         vscode.window.showErrorMessage('Unable to access the Git API.');
@@ -47,11 +47,19 @@ function handleGitRepositories() {
     }
 
     const gitApi = gitExtension.getAPI(1);
-
+    const repos = gitApi.repositories;
     if (gitApi.repositories.length === 0) {
         vscode.window.showErrorMessage('No Git repositories found.');
         console.log('No Git repositories found.');
         return;
+    }
+    // const changes = await repos[0].diffWithHEAD();
+    const repo = repos[0];
+    const changes: any = repo.state.workingTreeChanges.concat(repo.state.indexChanges);
+    for (const change of changes) {
+        const filePath = change.resourceUri.fsPath; 
+        const diff = await repo.diffWithHEAD(filePath);  
+        outputChannel.appendLine(`File: ${filePath}\nDiff:\n${diff}`);
     }
 
     // Detect repositories
