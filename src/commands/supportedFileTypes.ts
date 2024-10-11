@@ -1,1 +1,1 @@
-export const supportedFileTypes = ['.md', '.ts', '.txt'];
+export const supportedFileTypes = ['.md', '.ts', '.txt' , '.yaml' ,'.yml' , '.tsx' , '.jsx' ,'.js'];

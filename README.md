@@ -1,8 +1,10 @@
 # ReNameIt 
 
+An AI-based renamer for Visual Studio Code.
+
 ## Overview
 
-ReNameIt is a VSCode extension that automatically suggests new file names based on the content of the file.
+Tired of coming up with file names that just don’t quite fit? ReNameIt is here to save you time and hassle. This smart VSCode extension analyzes the content of your files and suggests more right, relevant names—so you don’t have to. Whether you're working with code, documentation, or configurations, ReNameIt ensures your file names stay sharp and aligned with their purpose. From coding best practices to project clarity, let ReNameIt take the guesswork out of naming.
 
 ### Features
 
@@ -13,15 +15,20 @@ ReNameIt is a VSCode extension that automatically suggests new file names based 
   - Markdown (.md)
   - Plain Text (.txt)
   - TypeScript (.ts)
+  - JavaScript (.js)
+  - TypeScript JSX (.tsx)
+  - JavaScript JSX (.jsx)
+  - YAML (.yaml)
+  - YML (.yml)
 
 ### Usage
 
 1. Open a file in VSCode.
-2. ***(Optional)*** Set your preferred Naming Convention:
-Go to Settings (or press Ctrl + ,).
+2. ***Optional***: Set your preferred Naming Convention
+Go to Settings or press Ctrl + ,.
 Search for ReNameIt in the settings.
-Choose your preferred naming convention (e.g., camelCase, PascalCase, snake_case, etc.).
-3. Run the command **ReNameIt: Improve the name of the current file** from the Command Palette (`Ctrl+Shift+P`).
+Choose your preferred naming convention, for example, camelCase, PascalCase, snake_case, etc.
+3. Run the command **ReNameIt: Improve the name of the current file** from the Command Palette using `Ctrl+Shift+P`.
 4. Choose whether to accept, deny, or retry the renaming process.
 
 ### Requirements
