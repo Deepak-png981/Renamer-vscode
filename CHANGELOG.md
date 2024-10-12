@@ -4,6 +4,12 @@ All notable changes to the "AI-file-renmaer" extension will be documented in thi
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.2.1] - 12-10-2024
+
+### Added
+ 
+ - Bug fix for the issue of file name already correct
+
 ## [0.2.0] - 11-10-2024
 
 ### Added

@@ -35,6 +35,11 @@ export const improveFileNameCommand = async () => {
                 const suggestedName = path.extname(initialSuggestedName) !== fileExtension
                     ? initialSuggestedName + fileExtension
                     : initialSuggestedName;
+                
+                if(suggestedName === fileName){
+                    vscode.window.showInformationMessage('File name is already correct.');
+                    return;
+                }
 
                 const result = await vscode.window.showInformationMessage(
                     `Current file name: ${fileName}\nSuggested file name: ${suggestedName}`,
