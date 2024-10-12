@@ -25,10 +25,13 @@ Tired of coming up with file names that just don’t quite fit? ReNameIt is here
 
 1. Open a file in VSCode.
 2. ***Optional***: Set your preferred Naming Convention
-Go to Settings or press Ctrl + ,.
-Search for ReNameIt in the settings.
-Choose your preferred naming convention, for example, camelCase, PascalCase, snake_case, etc.
-3. Run the command **ReNameIt: Improve the name of the current file** from the Command Palette using `Ctrl+Shift+P`.
+   - Go to Settings or press `Ctrl + ,`.
+   - Search for ReNameIt in the settings.
+   - Choose your preferred naming convention, for example, camelCase, PascalCase, snake_case, etc.
+3. **Run the command** to rename the file. There are several ways to trigger this:
+   - **Via Command Palette**: Press `Ctrl+Shift+P`, type **ReNameIt: Improve the name of the current file**, and hit Enter.
+   - **Via File Explorer**: Right-click on any file in the file explorer and select **ReNameIt: Improve the name of the current file** from the context menu.
+   - **Via Editor**: Right-click anywhere inside an open file in the editor and select **ReNameIt: Improve the name of the current file** from the editor's context menu.
 4. Choose whether to accept, deny, or retry the renaming process.
 
 ### Requirements
