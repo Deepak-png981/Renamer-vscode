@@ -5,7 +5,7 @@
   "publisher": "DeepakJoshi",
   "repository": "https://github.com/Deepak-png981/Renamer-vscode",
   "icon": "images/ReNameIt.jpg",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "engines": {
     "vscode": "^1.93.0"
   },
@@ -21,6 +21,20 @@
         "title": "ReNameIt: Improve the name of the current file"
       }
     ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "renamer.improveFileName",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "renamer.improveFileName",
+          "group": "navigation"
+        }
+      ]
+    },
     "configuration": {
       "type": "object",
       "title": "ReNameIt Settings",
