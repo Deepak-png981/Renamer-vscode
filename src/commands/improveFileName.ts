@@ -29,7 +29,7 @@ export const improveFileNameCommand = async () => {
 
             try {
                 if(supportedFileTypes.includes(fileExtension)) {
-                const data = await renameFileViaApi(fileName, fileContent, namingConvention);
+                const data = await renameFileViaApi({fileName, fileContent}, namingConvention);
                 const initialSuggestedName = data.renamedFiles[fileName].suggested_name;
 
                 const suggestedName = path.extname(initialSuggestedName) !== fileExtension
@@ -54,7 +54,7 @@ export const improveFileNameCommand = async () => {
                     },
                     {
                         title: "❌ Deny",
-                        isCloseAffordance: true // This will act as a cancel button
+                        isCloseAffordance: true 
                     }
                 );
 
