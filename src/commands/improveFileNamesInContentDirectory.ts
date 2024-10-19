@@ -41,7 +41,7 @@ export const improveFileNamesInContentDirectory = async () => {
     try {
         await vscode.window.withProgress({
             location: vscode.ProgressLocation.Window,
-            title: "Renaming files in directory...",
+            title: "Improving file names in directory...",
             cancellable: false
         }, async (progress) => {
 

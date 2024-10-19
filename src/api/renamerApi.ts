@@ -19,11 +19,9 @@ export const renameFileViaApi = async (
               debug: 'true',
               namingConvention: namingConvention,
           };
-    vscode.window.showInformationMessage(`sending payload : ${JSON.stringify(payload)}`);
     try {
         const response = await axios.post(RUN_BINARY_URL, payload);
         const result = response.data;
-        vscode.window.showInformationMessage(`result : ${JSON.stringify(result)}`);
         return result;
     } catch (error) {
         throw new Error(`Error contacting API: ${error}`);
