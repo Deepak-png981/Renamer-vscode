@@ -4,6 +4,17 @@ All notable changes to the "AI-file-renmaer" extension are documented in this fi
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.4.1] - 28-10-2024
+### Fixed
+
+- Bug fix for the issue of file name in the content directory.
+
+## [0.4.0] - 12-10-2024
+
+### Added
+
+- Added the support for rename files in the content directory.
+
 ## [0.3.0] - 12-10-2024
 
 ### Added
