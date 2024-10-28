@@ -3,6 +3,7 @@ import * as path from 'path';
 import { renameFileViaApi } from '../api/renamerApi';
 import { renameFile } from '../utils/fileOperations';
 import { supportedFileTypes } from './supportedFileTypes';
+import { promptUserForFileRename } from '../utils/promptUtils';
 
 export const improveFileNameCommand = async () => {
     const editor = vscode.window.activeTextEditor;
@@ -40,31 +41,7 @@ export const improveFileNameCommand = async () => {
                     vscode.window.showInformationMessage('File name is already correct.');
                     return;
                 }
-
-                const result = await vscode.window.showInformationMessage(
-                    `Current file name: ${fileName}\nSuggested file name: ${suggestedName}`,
-                    { modal: true },
-                    {
-                        title: "✅ Accept Suggestion",
-                        isCloseAffordance: false
-                    },
-                    {
-                        title: "🔄 Retry",
-                        isCloseAffordance: false
-                    },
-                    {
-                        title: "❌ Deny",
-                        isCloseAffordance: true 
-                    }
-                );
-
-                if (result?.title === '✅ Accept Suggestion') {
-                    await renameFile(currentFilePath, suggestedName);
-                } else if (result?.title === '🔄 Retry') {
-                    improveFileNameCommand();
-                } else {
-                    vscode.window.showInformationMessage('File renaming cancelled.');
-                }
+                await promptUserForFileRename(currentFilePath, fileName, suggestedName);
             }else{
                 vscode.window.showInformationMessage('File type not supported.');
             }
