@@ -5,6 +5,7 @@ import { supportedFileTypes } from './supportedFileTypes';
 import * as fs from 'fs';
 import { renameFileViaApi } from '../api/renamerApi';
 import { RenameDirPayload } from '../types';
+import { promptUserForFileRename } from '../utils/promptUtils';
 
 export const improveFileNamesInContentDirectory = async () => {
     const folderUri = await vscode.window.showOpenDialog({
@@ -51,12 +52,9 @@ export const improveFileNamesInContentDirectory = async () => {
 
                 for (const oldFileName in renamedFiles) {
                     const suggestedName = renamedFiles[oldFileName].suggested_name;
-                    const newFileName = path.basename(suggestedName);
                     const oldFilePath = path.join(directoryPath, oldFileName);
 
-                    if (suggestedName !== oldFileName) {
-                        await renameFile(oldFilePath, newFileName);
-                    }
+                    await promptUserForFileRename(oldFilePath, oldFileName, suggestedName);
                 }
 
                 vscode.window.showInformationMessage(`File renaming in directory complete.`);
